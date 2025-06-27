@@ -97,6 +97,8 @@
             cursor: pointer;
             transition: all 0.3s;
             margin-top: 2rem;
+            text-decoration: none;
+            display: inline-block;
         }
         
         .cta-button:hover {
@@ -165,6 +167,45 @@
             overflow-x: auto;
         }
         
+        .download-section {
+            padding: 4rem 2rem;
+            text-align: center;
+            background-color: var(--code-bg);
+            border-top: 3px solid var(--primary);
+            border-bottom: 3px solid var(--primary);
+        }
+        
+        .platforms {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .platform-btn {
+            background-color: var(--secondary);
+            color: var(--text);
+            border: 2px solid var(--primary);
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .platform-btn:hover {
+            background-color: var(--primary);
+            color: var(--text);
+        }
+        
+        .changelog {
+            text-align: left;
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 1rem;
+            background-color: rgba(0,0,0,0.3);
+            border-left: 3px solid var(--accent);
+        }
+        
         footer {
             background-color: var(--primary);
             padding: 2rem;
@@ -185,6 +226,16 @@
                 font-size: 1.2rem;
             }
         }
+        
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+            20%, 40%, 60%, 80% { transform: translateX(5px); }
+        }
+        
+        .cta-button:hover {
+            animation: shake 0.5s;
+        }
     </style>
 </head>
 <body>
@@ -204,7 +255,7 @@
     <section class="hero">
         <h1>RockLang</h1>
         <p class="tagline">Язык программирования для тех, кто играет по своим правилам. Обратная совместимость с C++, но с бунтарским духом.</p>
-        <button href="RockLang1.0.zip" class="cta-button">Начать бунтовать</button>
+        <a href="#download" class="cta-button">Начать бунтовать</a>
     </section>
     
     <section id="features" class="features">
@@ -241,9 +292,34 @@
                     <td>Подключение библиотек</td>
                 </tr>
                 <tr>
-                    <td><code>HOI</code></td>
+                    <td><code>var</code></td>
+                    <td><code>[тип]</code></td>
+                    <td>Объявление переменной</td>
+                </tr>
+                <tr>
+                    <td><code>cast</code></td>
+                    <td><code>static_cast</code></td>
+                    <td>Приведение типов</td>
+                </tr>
+                <tr>
+                    <td><code>input</code></td>
+                    <td><code>std::cin &gt;&gt;</code></td>
+                    <td>Ввод данных</td>
+                </tr>
+                <tr>
+                    <td><code>output</code></td>
+                    <td><code>std::cout &lt;&lt;</code></td>
+                    <td>Вывод данных</td>
+                </tr>
+                <tr>
+                    <td><code>func</code></td>
                     <td><code>auto</code></td>
-                    <td>Автоматическое определение типа</td>
+                    <td>Объявление функции</td>
+                </tr>
+                <tr>
+                    <td><code>class</code></td>
+                    <td><code>class</code></td>
+                    <td>Объявление класса</td>
                 </tr>
                 <tr>
                     <td><code>?</code></td>
@@ -255,33 +331,143 @@
                     <td><code>else</code></td>
                     <td>Альтернативное условие</td>
                 </tr>
-                <!-- Добавьте остальные элементы синтаксиса по аналогии -->
+                <tr>
+                    <td><code>HOI</code></td>
+                    <td><code>auto</code></td>
+                    <td>Автоматическое определение типа</td>
+                </tr>
+                <tr>
+                    <td><code>Start</code></td>
+                    <td><code>// Start of main</code></td>
+                    <td>Начало основной программы</td>
+                </tr>
+                <tr>
+                    <td><code>End</code></td>
+                    <td><code>// End of main</code></td>
+                    <td>Конец основной программы</td>
+                </tr>
+                <tr>
+                    <td><code>.</code></td>
+                    <td><code>::</code></td>
+                    <td>Оператор области видимости</td>
+                </tr>
+                <tr>
+                    <td><code>global</code></td>
+                    <td><code>namespace</code></td>
+                    <td>Пространство имён</td>
+                </tr>
             </tbody>
         </table>
         
         <h3>Пример кода</h3>
         <div class="code-example">
-            <pre><code>use &lt;iostream&gt;
-use &lt;cstdlib&gt;
+            <pre><code>
+use &lt;iostream&gt;
 
-Start
-    system("title RockLang Test");
-    output "Hello, RockLang!\n";
-    while (true) {}
-End</code></pre>
+global rock {
+    func main() -> int {
+        Start
+        HOI name = "Anonymous";
+        output "Enter your name: ";
+        input name;
+        
+        ? (name == "") {
+            output "Hello, stranger!\n";
+        } ! {
+            output "Rock on, " << name << "!\n";
+        }
+        return 0;
+        End
+    }
+}
+            </code></pre>
         </div>
     </section>
     
-    <section id="download" style="padding: 4rem 2rem; text-align: center;">
+    <section id="download" class="download-section">
         <h2>Готовы к революции?</h2>
-        <p>Скачайте RockLang и начните писать код по-новому уже сегодня.</p>
-        <button href="RockLang1.0.zip" class="cta-button">Скачать (v1.0)</button>
-        <p>Windows</p>
+        <p>Скачайте RockLang 1.0 и начните писать код по-новому уже сегодня.</p>
+        
+        <a href="RockLang1.0.zip" download class="cta-button">Скачать RockLang 1.0</a>
+        
+        <div class="platforms">
+            <span>Доступно для:</span>
+            <button class="platform-btn">Windows</button>
+            <button class="platform-btn">Linux</button>
+            <button class="platform-btn">macOS</button>
+        </div>
+        
+        <div class="changelog">
+            <h3>Что нового в версии 1.0:</h3>
+            <ul>
+                <li>Полная поддержка C++17 стандарта</li>
+                <li>Встроенный IDE с подсветкой синтаксиса</li>
+                <li>Упрощённый синтаксис для быстрой разработки</li>
+                <li>Оптимизированный компилятор на базе MinGW</li>
+                <li>Кроссплатформенная поддержка</li>
+            </ul>
+        </div>
+    </section>
+    
+    <section id="community" style="padding: 4rem 2rem; text-align: center;">
+        <h2>Присоединяйтесь к сообществу</h2>
+        <p>Обсуждайте, делитесь кодом и находите единомышленников</p>
+        <div style="display: flex; justify-content: center; gap: 1rem; margin-top: 2rem;">
+            <a href="#" class="platform-btn">Discord</a>
+            <a href="#" class="platform-btn">GitHub</a>
+            <a href="#" class="platform-btn">Telegram</a>
+        </div>
     </section>
     
     <footer>
         <p>© 2023 RockLang | Сделано с ♥ для тех, кто не идёт на компромиссы</p>
-        <p>Иконка: <code>icon.ico</code></p>
+        <p>Иконка: <code>icon.ico</code> | Версия: <code>1.0</code></p>
     </footer>
+
+    <script>
+        // Анимация скачивания
+        document.querySelector('a[href="RockLang1.0.zip"]').addEventListener('click', function(e) {
+            if(!this.getAttribute('data-clicked')) {
+                e.preventDefault();
+                const originalText = this.textContent;
+                this.textContent = 'Подготовка скачивания...';
+                this.setAttribute('data-clicked', 'true');
+                
+                setTimeout(() => {
+                    this.textContent = 'Скачивание началось!';
+                    setTimeout(() => {
+                        window.location.href = 'RockLang1.0.zip';
+                        this.textContent = originalText;
+                        this.removeAttribute('data-clicked');
+                    }, 1000);
+                }, 1500);
+            }
+        });
+        
+        // Логика для кнопок платформ
+        document.querySelectorAll('.platform-btn').forEach(btn => {
+            if(!btn.getAttribute('href')) {
+                btn.addEventListener('click', function() {
+                    this.textContent = 'Скоро будет!';
+                    setTimeout(() => {
+                        this.textContent = this.textContent.includes('Windows') ? 'Windows' : 
+                                          this.textContent.includes('Linux') ? 'Linux' : 'macOS';
+                    }, 1500);
+                });
+            }
+        });
+        
+        // Плавная прокрутка для якорных ссылок
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                if(this.getAttribute('href') !== '#') {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
 </body>
 </html>
